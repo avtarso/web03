@@ -28,15 +28,16 @@ def int_one_arg_input(min_value: int, max_value: int) -> int:
             first_run = False
 
 
-def transform_data(data: dict) -> None:
-    transformed = []
+def transform_data(data: list) -> str:
+    
     result = ""
+    
+    if not data:
+        return result
+
     for item in data:
         for date, currencies in item.items():
-            transformed.append(currencies)
-    raw_result = transformed[0]
-    for currency, data in raw_result.items():
-        result += f"{currency} sale/purch - {data['sale']}/{data['purchase']}\n"
+            for currency, rates in currencies.items():
+                result += f"{currency} sale/purchase - {rates['sale']}/{rates['purchase']}\n"
+
     return result
-
-
