@@ -1,7 +1,7 @@
 import asyncio
 
 from classes import CurrencyRate
-from func import int_one_arg_input
+from func import int_one_arg_input, transform_data
 
 
 async def main(view_days: int) -> None:
@@ -9,6 +9,8 @@ async def main(view_days: int) -> None:
     rates = CurrencyRate()
     currency_rates = await rates.get_currency_rates(n_days=view_days)
     print(currency_rates)
+    print("-----------------------")
+    print(transform_data(currency_rates))
 
 
 if __name__ == "__main__":
